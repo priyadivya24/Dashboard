@@ -182,15 +182,6 @@ def construct_display_graph(n_clicks, analysis,relayout_data) -> FigureResampler
     spec_data, freqs, times = get_spectrogram(data_array, fs=1)
     spec_fig = go.Figure(go.Heatmap(z=spec_data, x=times, y=freqs, colorscale='Viridis'))
 
-    if relayout_data:
-        new_range = relayout_data.get("xaxis.range")
-        if new_range:
-            # Apply new range to all graphs
-            fig.update_layout(xaxis=dict(range=new_range))
-            spec_fig.update_layout(xaxis=dict(range=new_range))
-
-    return fig, spec_fig, Serverside(fig)
-
 
     return fig, spec_fig, Serverside(fig)
 
